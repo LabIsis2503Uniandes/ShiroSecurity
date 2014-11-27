@@ -18,11 +18,12 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
+            
             <version>7.6.0.v20120127</version>
         </dependency>
 
         <!-- Jersey -->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.8</version>
@@ -123,17 +124,13 @@
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
+                        <webApp>
+                            <contextPath>/index.html</contextPath>
+                        </webApp>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
     <name>Competitors</name>
 </project>
