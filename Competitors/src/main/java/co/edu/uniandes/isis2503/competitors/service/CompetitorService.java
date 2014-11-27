@@ -30,8 +30,7 @@ import org.json.simple.JSONObject;
 @Produces(MediaType.APPLICATION_JSON)
 public class CompetitorService {
 
-//    @PersistenceContext(unitName = "AplicacionMundialPU")
-//    EntityManager entityManager;
+
     
     protected CompetitorsLogic competitorsLogic;
     
@@ -39,18 +38,7 @@ public class CompetitorService {
 	public void loadDependencies(){
 		competitorsLogic = new CompetitorsLogic();
 	}
-    
-    
    
-
-//    @PostConstruct
-//    public void init() {
-//        try {
-//            entityManager = PersistenceManager.getInstance().getEntityManagerFactory().createEntityManager();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     @GET
     public Response getAll() {
@@ -62,41 +50,4 @@ public class CompetitorService {
         return competitorsLogic.createCompetitor(competitor);
     }
     
-
-//    @POST
-//    @Path("/add")
-//    public Response createCompetitor(CompetitorEntity competitor) {
-//
-//        CompetitorEntity c = new CompetitorEntity();
-//        JSONObject rta = new JSONObject();
-//        c.setAddress(competitor.getAddress());
-//        c.setAge(competitor.getAge());
-//        c.setCellphone(competitor.getCellphone());
-//        c.setCity(competitor.getCity());
-//        c.setCountry(competitor.getCountry());
-//        c.setName(competitor.getName());
-//        c.setSurname(competitor.getSurname());
-//        c.setTelephone(competitor.getTelephone());
-//
-//        try {
-//            entityManager.getTransaction().begin();
-//            entityManager.persist(c);
-//            entityManager.getTransaction().commit();
-//            entityManager.refresh(c);
-//            rta.put("competitor_id", c.getId());
-//        } catch (Throwable t) {
-//            t.printStackTrace();
-//            if (entityManager.getTransaction().isActive()) {
-//                entityManager.getTransaction().rollback();
-//            }
-//            c = null;
-//        } finally {
-//            //entityManager.flush();
-//        	entityManager.clear();
-//        	entityManager.close();
-//        }
-//
-//        return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta.toJSONString()).build();
-//    }
-
 }
