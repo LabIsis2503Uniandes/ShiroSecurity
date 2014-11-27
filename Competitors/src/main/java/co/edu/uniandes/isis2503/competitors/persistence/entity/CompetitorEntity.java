@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.example.models;
+package co.edu.uniandes.isis2503.competitors.persistence.entity;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-public class Competitor implements Serializable{
+public class CompetitorEntity implements Serializable{
      private static final long serialVersionUID = 1L;
      
     @Id
@@ -61,7 +61,7 @@ public class Competitor implements Serializable{
     private boolean winner;
     //
     
-    public Competitor(){
+    public CompetitorEntity(){
         
     }
     

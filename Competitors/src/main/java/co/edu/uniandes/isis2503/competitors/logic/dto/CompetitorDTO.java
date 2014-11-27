@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.example.models;
+package co.edu.uniandes.isis2503.competitors.logic.dto;
+
+
 
 /**
  *

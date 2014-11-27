@@ -1,4 +1,4 @@
-package com.example;
+package co.edu.uniandes.isis2503.competitors.config;
 
 import javax.persistence.EntityManager;
 
@@ -34,7 +34,7 @@ public class Main {
         root.setDescriptor(webappDirLocation + "/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
         
-        PersistenceManager.getInstance().getEntityManagerFactory();
+        //PersistenceManager.getInstance().getEntityManagerFactory();
 
         // Parent loader priority is a class loader setting that Jetty accepts.
         // By default Jetty will behave like most web containers in that it will
