@@ -7,5 +7,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class WebApp extends ResourceConfig {
 	public WebApp(){
         packages("co.edu.uniandes.isis2503.competitors.service");
+        packages("co.edu.uniandes.isis2503.user.service");
     }
 }
