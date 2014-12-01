@@ -5,11 +5,12 @@
  */
 package co.edu.uniandes.csw.miso4204.security;
 
-import static co.edu.uniandes.csw.miso4204.security.SecurityRealm.REALM;
+
 import co.edu.uniandes.csw.miso4204.security.jwt.JwtToken;
 import co.edu.uniandes.csw.miso4204.security.jwt.api.VerifyToken;
 import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
 import co.edu.uniandes.csw.miso4204.security.logic.dto.UserDTO;
+import javax.annotation.PostConstruct;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -25,7 +26,14 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
  */
 public class SecurityAuthenticator implements Authenticator {
 
-    private SecurityLogic securityLogic;
+    protected SecurityLogic securityLogic;
+    
+    
+    @PostConstruct
+	public void loadDependencies(){
+		securityLogic = new SecurityLogic();
+	}
+    
 
     public AuthenticationInfo authenticate(AuthenticationToken at) throws AuthenticationException {
         JwtToken authToken = (JwtToken) at;
@@ -56,6 +64,7 @@ public class SecurityAuthenticator implements Authenticator {
     }
 
     public boolean validarToken(UserDTO user) {
+        loadDependencies();
         UserDTO userRecord = securityLogic.getUserSession(user.getId());
         boolean result = false;
         if (userRecord != null) {
@@ -64,12 +73,12 @@ public class SecurityAuthenticator implements Authenticator {
         return result;
     }
 
-    public SecurityLogic getSecurityLogic() {
-        return securityLogic;
-    }
-
-    public void setSecurityLogic(SecurityLogic securityLogic) {
-        this.securityLogic = securityLogic;
-    }
+//    public SecurityLogic getSecurityLogic() {
+//        return securityLogic;
+//    }
+//
+//    public void setSecurityLogic(SecurityLogic securityLogic) {
+//        this.securityLogic = securityLogic;
+//    }
 
 }
