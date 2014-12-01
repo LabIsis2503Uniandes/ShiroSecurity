@@ -68,4 +68,56 @@ public class CompetitorsPersistence {
         return Response.status(status).header("Access-Control-Allow-Origin", "*").entity(resp).build();
     }
 
+    public Response deleteCompetitor(Long id) {
+        int status = 500;
+        String resp = "Error en la solicitud de eliminación";
+        entityManager = emf.createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            CompetitorEntity competitor = entityManager.find(CompetitorEntity.class, id);
+            entityManager.remove(competitor);
+            entityManager.getTransaction().commit();
+            resp = "Competidor " + competitor.getName() + " ha sido eliminado";
+            status = 200;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (entityManager.isOpen());
+            entityManager.close();
+            status = 500;
+        } finally {
+            if (entityManager.isOpen());
+            entityManager.close();
+        }
+        return Response.status(status).header("Access-Control-Allow-Origin", "*").entity(resp).build();
+    }
+
+    public Response updateCompetitor(Long id, CompetitorEntity competitor) {
+        int status = 500;
+        String resp = "Error en la solicitud";
+        entityManager = emf.createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            CompetitorEntity competitorBd = entityManager.find(CompetitorEntity.class, id);
+            competitorBd.setAddress(competitor.getAddress());
+            competitorBd.setAge(competitor.getAge());
+            competitorBd.setCellphone(competitor.getCellphone());
+            competitorBd.setCity(competitor.getCity());
+            competitorBd.setCountry(competitor.getCountry());
+            entityManager.getTransaction().commit();
+            status = 200;
+            resp = "Competidor " + competitorBd.getName() + " ha sido actualizado";
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(entityManager.isOpen());
+            entityManager.close();
+            
+        } finally {
+            if(entityManager.isOpen());
+            entityManager.close();
+        }
+
+        return Response.status(status).header("Access-Control-Allow-Origin", "*").entity(resp).build();
+    }
+
 }

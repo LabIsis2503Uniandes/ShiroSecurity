@@ -30,6 +30,15 @@ public class CompetitorsLogic {
         return persistance.createCompetitor(competitor);
     }
     
+    
+    public Response deleteCompetitor(Long id){
+        return persistance.deleteCompetitor(id);
+    }
+
+    
+    public Response updateCompetitor(Long id, CompetitorEntity competitor) {
+        return persistance.updateCompetitor(id, competitor);
+    }
      
      
      

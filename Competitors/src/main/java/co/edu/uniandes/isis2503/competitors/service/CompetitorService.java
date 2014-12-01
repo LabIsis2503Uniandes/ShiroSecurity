@@ -13,9 +13,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -23,7 +26,7 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Mauricio
+ * @author estudiante
  */
 @Path("/competitors")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -49,5 +52,22 @@ public class CompetitorService {
     public Response createCompetitor(CompetitorEntity competitor){
         return competitorsLogic.createCompetitor(competitor);
     }
+    
+    @DELETE
+    @Path("{id}")
+    public Response deleteCompetitor(@PathParam("id") Long id){
+        return competitorsLogic.deleteCompetitor(id);
+    }
+    
+    @PUT
+    @Path("{id}")
+    public Response updateCompetitor(@PathParam("id") Long id, CompetitorEntity competitor){
+        return competitorsLogic.updateCompetitor(id,competitor);
+    
+    }
+    
+    
+    
+    
     
 }
