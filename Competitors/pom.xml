@@ -44,7 +44,7 @@
             <version>1.0.RC2</version>
               <scope>runtime</scope>
         </dependency> 
-         
+   
         <dependency>
             <groupId>com.stormpath.sdk</groupId>
             <artifactId>stormpath-sdk-httpclient</artifactId>
@@ -100,6 +100,12 @@
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-impl</artifactId>
+            <version>1.0.RC2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
     <build>
