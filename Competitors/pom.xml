@@ -26,21 +26,35 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>1.2.2</version>
+            <version>1.2.3</version>
             <type>jar</type>
         </dependency>
         
+        <!--   Stormpath   -->
         
-        <!--        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>1.8</version>
-        </dependency>
+         <dependency>
+                <groupId>com.stormpath.shiro</groupId>
+                <artifactId>stormpath-shiro-core</artifactId>
+                <version>0.6.0</version>
+         </dependency>
+         
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-            <version>1.8</version>
-        </dependency>-->
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-api</artifactId>
+            <version>1.0.RC2</version>
+              <scope>runtime</scope>
+        </dependency> 
+         
+        <dependency>
+            <groupId>com.stormpath.sdk</groupId>
+            <artifactId>stormpath-sdk-httpclient</artifactId>
+            <version>1.0.RC2</version>
+            <scope>runtime</scope>
+        </dependency> 
+        
+        
+        
+    
         <!-- Jersey -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
