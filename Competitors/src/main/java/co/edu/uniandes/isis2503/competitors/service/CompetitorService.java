@@ -23,31 +23,37 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Mauricio
+ * @author Estudiante
  */
 @Path("/competitors")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CompetitorService {
 
-
-    
     protected CompetitorsLogic competitorsLogic;
-    
+
     @PostConstruct
-	public void loadDependencies(){
-		competitorsLogic = new CompetitorsLogic();
-	}
-   
+    public void loadDependencies() {
+        competitorsLogic = new CompetitorsLogic();
+    }
 
     @GET
     public Response getAll() {
         return competitorsLogic.getAll();
     }
-    
+
     @POST
-    public Response createCompetitor(CompetitorEntity competitor){
+    public Response createCompetitor(CompetitorEntity competitor) {
         return competitorsLogic.createCompetitor(competitor);
     }
-    
+//
+//    @Path("/administration")
+//    @GET
+//    @Produces("text/html")
+//    public Response getPageAdmin() {
+//        int status = 200;
+//        String html = "<html lang=\\\"en\\\"><body><h1>Acceso a cuentas Administrador!!</body></h1></html>";
+//        return Response.status(status).header("Access-Control-Allow-Origin", "*").entity(html).build();
+//    }
+
 }
