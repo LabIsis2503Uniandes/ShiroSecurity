@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.miso4204.security.jwt.JwtToken;
 import co.edu.uniandes.csw.miso4204.security.jwt.api.VerifyToken;
 import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
 import co.edu.uniandes.csw.miso4204.security.logic.dto.UserDTO;
+import com.stormpath.shiro.realm.ApplicationRealm;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -20,7 +21,7 @@ import org.apache.shiro.util.ByteSource;
  *
  * @author estudiante
  */
-public class SecurityRealm extends AuthenticatingRealm{
+public class SecurityRealm extends ApplicationRealm{
     
     public static final String REALM="Ejemplo";
     
