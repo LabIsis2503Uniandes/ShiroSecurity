@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.miso4204.security;
 
-import co.edu.uniandes.csw.miso4204.security.jwt.JwtToken;
+import co.edu.uniandes.csw.miso4204.security.jwt.api.JwtToken;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

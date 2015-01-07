@@ -6,9 +6,8 @@
 package co.edu.uniandes.csw.miso4204.security;
 
 
-import co.edu.uniandes.csw.miso4204.security.jwt.JwtToken;
+import co.edu.uniandes.csw.miso4204.security.jwt.api.JwtToken;
 import co.edu.uniandes.csw.miso4204.security.jwt.api.VerifyToken;
-import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
 import co.edu.uniandes.csw.miso4204.security.logic.dto.UserDTO;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.api.ApiKey;
@@ -39,14 +38,6 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
  */
 public class SecurityAuthenticator implements Authenticator {
 
-    protected SecurityLogic securityLogic;
-    
-    
-    @PostConstruct
-	public void loadDependencies(){
-		securityLogic = new SecurityLogic();
-	}
-    
 
     public AuthenticationInfo authenticate(AuthenticationToken at) throws AuthenticationException {
         JwtToken authToken = (JwtToken) at;
@@ -77,15 +68,6 @@ public class SecurityAuthenticator implements Authenticator {
     }
 
     public boolean validarToken(UserDTO user) {
-// ###################### With DataBase ############################################         
-//        loadDependencies();
-//        UserDTO userRecord = securityLogic.getUserSession(user.getId());
-//        boolean result = false;
-//        if (userRecord != null) {
-//            result = (userRecord.getUsername().equals(user.getUsername()) && userRecord.getPassword().equals(user.getPassword()) && user.getTenantID().equals(userRecord.getTenantID()));
-//        }
-//        return result;
-// ##################################################################    
         
         boolean result = false;
         String path = "C:\\Users\\Jj.alarcon10\\Documents\\apiKey.properties";//Colocar la Ubicacion de su archivo apiKey.properties
@@ -107,13 +89,5 @@ public class SecurityAuthenticator implements Authenticator {
         return result;
         
     }
-
-//    public SecurityLogic getSecurityLogic() {
-//        return securityLogic;
-//    }
-//
-//    public void setSecurityLogic(SecurityLogic securityLogic) {
-//        this.securityLogic = securityLogic;
-//    }
 
 }

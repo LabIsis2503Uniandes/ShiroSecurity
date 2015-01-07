@@ -25,4 +25,6 @@ insert INTO "public".competitorentity (id, address, age, cellphone, city, countr
 insert INTO "public".competitorentity (id, address, age, cellphone, city, country, create_at, "name", surname, telephone, updated_at, winner)
 	VALUES (27, 'Calle falsa 123', 20, '31140450', 'New York', 'United States', '2014-12-09', 'Andrew', 'Stevenson', '123445', '2014-12-09', false);
 
+insert INTO "public".competitorentity (id, address, age, cellphone, city, country, create_at, "name", surname, telephone, updated_at, winner)
+	VALUES (28, 'Calle falsa 123', 29, '31140450', 'New York', 'United States', '2014-12-09', 'Mathew', 'Stevenson', '123445', '2014-12-09', false);
 

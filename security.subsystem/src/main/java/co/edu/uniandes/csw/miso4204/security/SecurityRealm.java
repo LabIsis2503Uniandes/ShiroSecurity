@@ -5,10 +5,21 @@
  */
 package co.edu.uniandes.csw.miso4204.security;
 
-import co.edu.uniandes.csw.miso4204.security.jwt.JwtToken;
+import co.edu.uniandes.csw.miso4204.security.jwt.api.JwtToken;
 import co.edu.uniandes.csw.miso4204.security.jwt.api.VerifyToken;
-import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
 import co.edu.uniandes.csw.miso4204.security.logic.dto.UserDTO;
+import com.stormpath.sdk.api.ApiKey;
+import com.stormpath.sdk.api.ApiKeys;
+import com.stormpath.sdk.application.Application;
+import com.stormpath.sdk.application.ApplicationList;
+import com.stormpath.sdk.application.Applications;
+import com.stormpath.sdk.authc.AuthenticationRequest;
+import com.stormpath.sdk.authc.AuthenticationResult;
+import com.stormpath.sdk.authc.UsernamePasswordRequest;
+import com.stormpath.sdk.client.Client;
+import com.stormpath.sdk.client.Clients;
+import com.stormpath.sdk.resource.ResourceException;
+import com.stormpath.sdk.tenant.Tenant;
 import com.stormpath.shiro.realm.ApplicationRealm;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -25,7 +36,6 @@ public class SecurityRealm extends ApplicationRealm{
     
     public static final String REALM="Ejemplo";
     
-    private SecurityLogic securityLogic;
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -49,17 +59,27 @@ public class SecurityRealm extends ApplicationRealm{
     }
 
     public boolean validarToken(UserDTO user) {
-        UserDTO userRecord = securityLogic.getUserSession(user.getId());
-        return (userRecord.getUsername().equals(user.getUsername()) && userRecord.getPassword().equals(user.getPassword()));
+        boolean result = false;
+        String path = "C:\\Users\\Jj.alarcon10\\Documents\\apiKey.properties";//Colocar la Ubicacion de su archivo apiKey.properties
+        ApiKey apiKey = ApiKeys.builder().setFileLocation(path).build();
+        Client client = Clients.builder().setApiKey(apiKey).build();
+
+        try {
+            AuthenticationRequest request = new UsernamePasswordRequest(user.getUsername(), user.getPassword());
+            Tenant tenant = client.getCurrentTenant();
+            ApplicationList applications = tenant.getApplications(Applications.where(Applications.name().eqIgnoreCase("My Application")));
+            Application application = applications.iterator().next();
+
+            AuthenticationResult resultAuth = application.authenticateAccount(request);
+            result = true;
+        
+        }catch(ResourceException e){
+            System.out.println("Error at Authenticating");
+        }
+        return result;
+        
     }
 
-    public SecurityLogic getSecurityLogic() {
-        return securityLogic;
-    }
-
-    public void setSecurityLogic(SecurityLogic securityLogic) {
-        this.securityLogic = securityLogic;
-    }
     
     
 }

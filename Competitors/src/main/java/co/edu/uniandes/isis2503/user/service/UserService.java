@@ -7,9 +7,8 @@ package co.edu.uniandes.isis2503.user.service;
 
 import co.edu.uniandes.csw.miso4204.security.jwt.api.JsonWebToken;
 import co.edu.uniandes.csw.miso4204.security.jwt.api.JwtHashAlgorithm;
-import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
+//import co.edu.uniandes.csw.miso4204.security.logic.SecurityLogic;
 import co.edu.uniandes.csw.miso4204.security.logic.dto.UserDTO;
-import co.edu.uniandes.isis2503.competitors.logic.CompetitorsLogic;
 import com.google.gson.Gson;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.api.ApiKey;
@@ -43,12 +42,12 @@ import com.stormpath.sdk.resource.ResourceException;
 @Produces(MediaType.APPLICATION_JSON)
 public class UserService {
 
-    protected SecurityLogic securityLogic;
-
-    @PostConstruct
-    public void loadDependencies() {
-        securityLogic = new SecurityLogic();
-    }
+//    protected SecurityLogic securityLogic;
+//
+//    @PostConstruct
+//    public void loadDependencies() {
+//        securityLogic = new SecurityLogic();
+//    }
 
     @Path("/login")
     @POST
