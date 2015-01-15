@@ -17,6 +17,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.json.simple.JSONObject;
@@ -41,8 +42,8 @@ public class CompetitorService {
    
 
     @GET
-    public Response getAll() {
-        return competitorsLogic.getAll();
+    public Response getAll(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+        return competitorsLogic.getAllPage(page,maxRecords);
     }
     
     @POST

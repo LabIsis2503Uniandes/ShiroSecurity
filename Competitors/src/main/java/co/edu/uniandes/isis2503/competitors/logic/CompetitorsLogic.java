@@ -25,7 +25,12 @@ public class CompetitorsLogic {
     public Response getAll() {
         return persistance.getAll();
     }
-     
+    
+    public Response getAllPage(Integer page, Integer maxRecords) {
+        return persistance.getAllPage(page,maxRecords);
+    }
+    
+    
     public Response createCompetitor(CompetitorEntity competitor){
         return persistance.createCompetitor(competitor);
     }
