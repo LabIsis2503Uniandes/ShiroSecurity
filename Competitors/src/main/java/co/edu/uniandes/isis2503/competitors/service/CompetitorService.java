@@ -41,7 +41,7 @@ public class CompetitorService {
    
 
     @GET
-    public Response getAll() {
+    public Response getAllCompetitors() {
         return competitorsLogic.getAll();
     }
     
