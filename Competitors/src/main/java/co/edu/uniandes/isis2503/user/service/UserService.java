@@ -42,12 +42,6 @@ import com.stormpath.sdk.resource.ResourceException;
 @Produces(MediaType.APPLICATION_JSON)
 public class UserService {
 
-//    protected SecurityLogic securityLogic;
-//
-//    @PostConstruct
-//    public void loadDependencies() {
-//        securityLogic = new SecurityLogic();
-//    }
 
     @Path("/login")
     @POST
@@ -75,14 +69,6 @@ public class UserService {
             token = new Gson().toJson(JsonWebToken.encode(userStorm, "Un14nd3s2014@", JwtHashAlgorithm.HS256));
             status = 200;
 
-//          UserDTO userDb = securityLogic.getUserSession(user.getUsername());
-//          if(userDb!=null){
-//                if(userDb.getUsername().equals(user.getUsername()) && userDb.getPassword().equals(user.getPassword())){
-//                    token = new Gson().toJson(JsonWebToken.encode(userDb,"Un14nd3s2014@" ,JwtHashAlgorithm.HS256));
-//                    status = 200;
-//                }
-//            
-//            }
         } catch (ResourceException ex) {
             System.out.println(ex.getStatus() + " " + ex.getMessage());
         }
